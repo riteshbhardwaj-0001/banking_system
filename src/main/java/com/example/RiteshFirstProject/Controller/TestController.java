@@ -1,5 +1,6 @@
 package com.example.RiteshFirstProject.Controller;
 
+import com.example.RiteshFirstProject.forms.LoginForm;
 import com.example.RiteshFirstProject.forms.TransactionForm;
 import com.example.RiteshFirstProject.models.CustomerModel;
 import com.example.RiteshFirstProject.models.TransactionModel;
@@ -8,11 +9,9 @@ import com.example.RiteshFirstProject.repo.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import sun.awt.ModalityListener;
 
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -23,7 +22,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Controller
-
 public class TestController {
 
     @Autowired
@@ -36,6 +34,18 @@ public class TestController {
         return "home";
     }
 
+    @GetMapping("/login")
+    public String getLogin(Model model){
+        model.addAttribute("loginForm",new LoginForm());
+        return "login";
+    }
+
+    @PostMapping("/handleLogin")
+    public String handleLogin(@ModelAttribute LoginForm loginForm){
+        //
+        //
+       return "home";
+    }
     @GetMapping("/userDetails")
     public String getDetails(Model model){
         List<CustomerModel> customers = customerRepository.findAll();
