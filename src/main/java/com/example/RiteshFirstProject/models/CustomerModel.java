@@ -11,15 +11,6 @@ public class CustomerModel {
     @Column(unique = true)
     private String email;
     private double currentBalance;
-    private String password;
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public CustomerModel() {
     }
